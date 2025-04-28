@@ -1,0 +1,687 @@
+{
+	"info": {
+		"_postman_id": "6de77dbe-2452-49b0-b26b-a8558f5729f0",
+		"name": "Skincare User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34415633"
+	},
+	"item": [
+		{
+			"name": "ChiTietTaiKhoan",
+			"item": [
+				{
+					"name": "update_ChitietTK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData).to.be.an('object');\r",
+									"  pm.expect(responseData).to.have.property('maChitietTaiKhoan');\r",
+									"  pm.expect(responseData).to.have.property('maTaiKhoan');\r",
+									"  pm.expect(responseData).to.have.property('maLoaitaikhoan');\r",
+									"  pm.expect(responseData).to.have.property('hoTen');\r",
+									"  pm.expect(responseData).to.have.property('diaChi');\r",
+									"  pm.expect(responseData).to.have.property('soDienThoai');\r",
+									"  pm.expect(responseData).to.have.property('anhDaiDien');\r",
+									"  pm.expect(responseData).to.have.property('status');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"AnhDaiDien is a valid URL format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.anhDaiDien).to.match(/^https?:\\/\\/(www\\.)?\\w+\\.\\w+/);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"maTaiKhoan\": 30,\r\n  \"hoTen\": \"anduyen\",\r\n  \"diaChi\": \"HY\",\r\n  \"soDienThoai\": \"0962813120\",\r\n  \"anhDaiDien\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44365/api/ChiTietTaiKhoan/sua-chitiettaikhoan",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44365",
+							"path": [
+								"api",
+								"ChiTietTaiKhoan",
+								"sua-chitiettaikhoan"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DanhGia",
+			"item": []
+		},
+		{
+			"name": "DanhMucUuDai",
+			"item": []
+		},
+		{
+			"name": "DanhMuc",
+			"item": []
+		},
+		{
+			"name": "HoaDon",
+			"item": []
+		},
+		{
+			"name": "Image",
+			"item": []
+		},
+		{
+			"name": "QuangCao",
+			"item": []
+		},
+		{
+			"name": "SanPham",
+			"item": [
+				{
+					"name": "Get by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44365/api/SanPham/getbyid-sanpham/88",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44365",
+							"path": [
+								"api",
+								"SanPham",
+								"getbyid-sanpham",
+								"88"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Slidedetail",
+			"item": [
+				{
+					"name": "Get all slide",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44365/api/SlideDetail/get-all-slide",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44365",
+							"path": [
+								"api",
+								"SlideDetail",
+								"get-all-slide"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TaiKhoan",
+			"item": [
+				{
+					"name": "Create account",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"dataTaiKhoan\",\"anduyen5\")\r",
+									"pm.collectionVariables.set(\"dataMatKhau\",\"anduyen5\")\r",
+									"pm.collectionVariables.set(\"dataEmail\",\"anduyen4@gmail.com\")\r",
+									"pm.collectionVariables.set(\"dataMaLTK\",\"1\")\r",
+									"pm.collectionVariables.set(\"dataHoten\",\"Lưu Thị An Duyên\")\r",
+									"pm.collectionVariables.set(\"dataDiaChi\",\"Hưng yên\")\r",
+									"pm.collectionVariables.set(\"dataSDT\",\"0236514210\")\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \r\n  \"tenTaiKhoan\": \"{{dataTaiKhoan}}\",\r\n  \"matKhau\": \"{{dataMatKhau}}\",\r\n  \"email\": \"{{dataEmail}}\",\r\n  \"list_json_chitiet_taikhoan\": [\r\n    {\r\n      \"maChitietTaiKhoan\": 0,\r\n      \r\n      \"maLoaitaikhoan\": {{dataMaLTK}},\r\n      \"hoTen\": \"{{dataHoten}}\",\r\n      \"diaChi\": \"{{dataDiaChi}}\",\r\n      \"soDienThoai\": \"{{dataSDT}}\",\r\n      \"anhDaiDien\": \"string\",\r\n      \"status\": 0\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44365/api/TaiKhoan/create-taikhoan",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44365",
+							"path": [
+								"api",
+								"TaiKhoan",
+								"create-taikhoan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/plain",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44365/api/TaiKhoan/getbyid-taikhoan-chitiettaikhoan/30",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44365",
+							"path": [
+								"api",
+								"TaiKhoan",
+								"getbyid-taikhoan-chitiettaikhoan",
+								"30"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update username",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"maTaiKhoan\": 30,\r\n  \"tenTaiKhoan\": \"anduyen\",\r\n  \"email\": \"string\",\r\n  \"matKhau\": \"2\",\r\n  \"list_json_chitiet_taikhoan\": [\r\n    {\r\n      \"maChitietTaiKhoan\": 31,\r\n      \"maTaiKhoan\": 30,\r\n      \"maLoaitaikhoan\": 1,\r\n      \"hoTen\": \"string\",\r\n      \"diaChi\": \"string\",\r\n      \"soDienThoai\": \"stringggg\",\r\n      \"anhDaiDien\": \"string\",\r\n      \"status\": 2\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44365/api/TaiKhoan/update-taikhoan",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44365",
+							"path": [
+								"api",
+								"TaiKhoan",
+								"update-taikhoan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tenTaiKhoan\": \"anduyen2\",\r\n  \"matKhau\": \"anduyen2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44365/api/TaiKhoan/doimk-taikhoan",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44365",
+							"path": [
+								"api",
+								"TaiKhoan",
+								"doimk-taikhoan"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is within an acceptable range\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Validate the response schema for user fields\", function () {\r",
+									"    const responseData = pm.response.json()\r",
+									"    const taikhoan_actual = responseData.taikhoan\r",
+									"    const taikhoan_expect = pm.variables.get(\"dataUsername\")\r",
+									"    pm.expect(taikhoan_actual).to.eql(taikhoan_expect)\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"dataUsername\",\"anduyen2\")\r",
+									"pm.collectionVariables.set(\"dataPassword\",\"anduyen2\")"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"{{dataUsername}}\",\r\n  \"password\": \"{{dataPassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44365/api/User/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44365",
+							"path": [
+								"api",
+								"User",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Fail",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"dataUsername\",\"anduyen1\")\r",
+									"pm.collectionVariables.set(\"dataPassword\",\"anduyen2\")\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is within an acceptable range\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Validate message tài khoản hoặc mật khẩu không đúng\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"\r",
+									"    pm.expect(responseData).to.have.property('message');\r",
+									"    pm.expect(responseData.message).to.eql(\"Tài khoản hoặc mật khẩu không đúng!\")\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"{{dataUsername}}\",\r\n  \"password\": \"{{dataPassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44365/api/User/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44365",
+							"path": [
+								"api",
+								"User",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login without username",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"dataUsername\",\"\")\r",
+									"pm.collectionVariables.set(\"dataPassword\",\"anduyen1\")\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is within an acceptable range\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Validate error message\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.title).to.eql(\"One or more validation errors occurred.\")\r",
+									"    pm.expect(responseData.errors.Username[0]).to.eql(\"The Username field is required.\")\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"{{dataUsername}}\",\r\n  \"password\": \"{{dataPassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44365/api/User/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44365",
+							"path": [
+								"api",
+								"User",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login without password",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"dataUsername\",\"anduyen1\")\r",
+									"pm.collectionVariables.set(\"dataPassword\",\"\")\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is within an acceptable range\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Validate error message\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.title).to.eql(\"One or more validation errors occurred.\")\r",
+									"    pm.expect(responseData.errors.Password[0]).to.eql(\"The Password field is required.\")\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"{{dataUsername}}\",\r\n  \"password\": \"{{dataPassword}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44365/api/User/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44365",
+							"path": [
+								"api",
+								"User",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "username",
+			"value": ""
+		},
+		{
+			"key": "password",
+			"value": ""
+		},
+		{
+			"key": "dataUsername",
+			"value": ""
+		},
+		{
+			"key": "dataPassword",
+			"value": ""
+		},
+		{
+			"key": "dataTaiKhoan",
+			"value": ""
+		},
+		{
+			"key": "dataMatKhau",
+			"value": ""
+		},
+		{
+			"key": "dataEmail",
+			"value": ""
+		},
+		{
+			"key": "dataMaLTK",
+			"value": ""
+		},
+		{
+			"key": "dataHoten",
+			"value": ""
+		},
+		{
+			"key": "dataDiaChi",
+			"value": ""
+		},
+		{
+			"key": "dataSDT",
+			"value": ""
+		},
+		{
+			"key": "dataAvt",
+			"value": ""
+		}
+	]
+}

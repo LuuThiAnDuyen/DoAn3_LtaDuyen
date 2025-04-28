@@ -1,0 +1,3 @@
+As a customer, I want to add a product to my cart so that I can purchase it later.
+As a manager, I want to generate sales reports so that I can track revenue.
+As an admin, I want to manage user accounts so that I can control access levels.
